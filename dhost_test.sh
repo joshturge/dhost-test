@@ -34,6 +34,7 @@ if [ -z "$DHOST_COOLDOWN" ]; then
 	DHOST_COOLDOWN=30
 fi
 
+
 if [ -z "$DHOST_CURL_TIMEOUT" ]; then
 	DHOST_CURL_TIMEOUT=15
 fi

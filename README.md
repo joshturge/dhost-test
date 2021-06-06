@@ -25,13 +25,16 @@ Examples are provided [here](example/).
 Basic usage of the command, you must provide a host, webhook ID and token otherwise
 the script will fail to run.
 
-`$ export DHOST_WEBHOOK_ID="235325245324555"`
-`$ export DHOST_WEBHOOK_TOKEN="kjhewkfwkfwef"`
-`$ dhost_test https://joshturge.dev/`
+```bash
+$ export DHOST_WEBHOOK_ID="235325245324555"
+$ export DHOST_WEBHOOK_TOKEN="kjhewkfwkfwef"
+$ dhost_test https://joshturge.dev/
+```
 
 ## Environment Variables
 
 | Variable 						| Default Value |
+|---------------------|---------------|
 | DHOST_WEBHOOK_ID 		| None 					|
 | DHOST_WEBHOOK_TOKEN | None 					|
 | DHOST_COOLDOWN 			| 30 						|
