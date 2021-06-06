@@ -39,11 +39,10 @@ if [ -z "$DHOST_CURL_TIMEOUT" ]; then
 fi
 
 function send_message {
-	curl -X POST -H "Content-Type: application/json" \
-		--data "$1" $WEBHOOK_URL
+	curl -X POST -H "Content-Type: application/json" --data "$1" $WEBHOOK_URL
 }
 
-is_host_down=false
+is_host_down=true
 
 while true; do
 	if ! curl --silent --max-time $DHOST_CURL_TIMEOUT $TARGET_HOST >/dev/null; then
@@ -51,7 +50,7 @@ while true; do
 		if ! $is_host_down; then
 			printf "dhost_test: timeout of %s seconds has been reached. Host is down\n" "$DHOST_CURL_TIMEOUT"
 			is_host_down=true
-			send_message $ON_DOWN
+			send_message "$ON_DOWN"
 		fi
 
 	else
@@ -59,7 +58,7 @@ while true; do
 		if $is_host_down; then
 			printf "dhost_test: Host is up\n" "$DHOST_CURL_TIMEOUT"
 			is_host_down=false
-			send_message $ON_UP
+			send_message "$ON_UP"
 		fi
 	fi
 
