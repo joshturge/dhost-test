@@ -1,0 +1,19 @@
+{
+	"embeds": [
+		{
+			"title": "Blackboard",
+			"description": "Blackboard has stopped responding and may be offline. ",
+			"url": "https://blackboard.qut.edu.au",
+			"color": "17536",
+			"footer": {
+				"text": "This script will inevitably create false readings from time to time."
+			},
+			"fields": [
+				{
+					"name": "Why?",
+					"value": "This usually happens when Blackboard enters maintenance mode or is recieving large amounts of traffic."
+				}
+			]
+		}
+	]
+}

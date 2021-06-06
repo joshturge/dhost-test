@@ -1,0 +1,13 @@
+{
+	"embeds": [
+		{
+			"title": "Blackboard",
+			"description": "Blackboard is now responding.",
+			"url": "https://blackboard.qut.edu.au",
+			"color": "17536",
+			"footer": {
+				"text": "This script will inevitably create false readings from time to time."
+			}
+		}
+	]
+}
