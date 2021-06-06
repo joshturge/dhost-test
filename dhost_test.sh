@@ -1,5 +1,7 @@
 #!/bin/sh
 
+# err will contruct an error message and exit the script
+# with the return status 1
 function err {
 	printf "dhost_test: %s\n" "$1" >&2
 	exit 1
@@ -19,12 +21,14 @@ if [ -z "$DHOST_WEBHOOK_TOKEN" ]; then
 	err "discord webhook token was not provided"
 fi
 
+# TODO: maybe make this a env?
 DATA_DIR="data"
 
 if [ ! -d "$DATA_DIR" ]; then
 	err "data directory: no such directory"
 fi
 
+# load the json message files
 ON_DOWN="$(cat $DATA_DIR/on_down.json)"
 ON_UP="$(cat $DATA_DIR/on_up.json)"
 
@@ -34,11 +38,11 @@ if [ -z "$DHOST_COOLDOWN" ]; then
 	DHOST_COOLDOWN=30
 fi
 
-
 if [ -z "$DHOST_CURL_TIMEOUT" ]; then
 	DHOST_CURL_TIMEOUT=15
 fi
 
+# send_message to the WEBHOOK_URL
 function send_message {
 	curl -X POST -H "Content-Type: application/json" --data "$1" $WEBHOOK_URL
 }
@@ -46,6 +50,7 @@ function send_message {
 is_host_down=true
 
 while true; do
+
 	if ! curl --silent --max-time $DHOST_CURL_TIMEOUT $TARGET_HOST >/dev/null; then
 
 		if ! $is_host_down; then
